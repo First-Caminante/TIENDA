@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sabor & Alma — Restaurante</title>
+    <meta
+      name="description"
+      content="Restaurante Sabor & Alma — Cocina artesanal con alma boliviana. Reservaciones, menú y más."
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a
+          class="navbar-brand d-flex align-items-center gap-2"
+          href="index.html"
+        >
+          <img
+            src="assets/img/logo.png"
+            alt="Logo"
+            width="42"
+            height="42"
+            class="logo-img"
+            onerror="this.style.display='none'"
+          />
+          <span class="brand-name"
+            >Sabor <span class="brand-accent">&</span> Alma</span
+          >
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navLinks"
+        >
+          <span class="nav-hamburger"><i class="bi bi-list"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navLinks">
+          <ul class="navbar-nav ms-auto align-items-center gap-lg-1">
+            <li class="nav-item">
+              <a class="nav-link" href="#inicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#nosotros">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="menu.html">Menú</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#galeria">Galería</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacto">Contacto</a>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn-reservar" href="reservaciones.html"
+                >Reservar Mesa</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+    <section id="inicio" class="hero-section">
+      <div class="hero-overlay"></div>
+      <div
+        class="hero-bg"
+        style="background-image: url(&quot;assets/img/hero-bg.jpg&quot;)"
+      ></div>
+      <div class="hero-grain"></div>
+      <div class="container hero-content text-center">
+        <p class="hero-eyebrow">Bienvenido a</p>
+        <h1 class="hero-title">Sabor <em>&</em> Alma</h1>
+        <p class="hero-subtitle">
+          Cocina artesanal con raíces bolivianas.<br />Cada plato, una historia.
+        </p>
+        <div class="hero-ctas d-flex gap-3 justify-content-center flex-wrap">
+          <a href="menu.html" class="btn-gold">Ver Menú</a>
+          <a href="reservaciones.html" class="btn-outline-light-custom"
+            >Reservar Mesa</a
+          >
+        </div>
+        <div class="hero-scroll-hint">
+          <span></span>
+          <p>Descubrir</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════ STRIP DE CARACTERÍSTICAS ═══════════════════════════ -->
+    <section class="features-strip">
+      <div class="container">
+        <div class="row g-0">
+          <div class="col-6 col-md-3 feature-item">
+            <i class="bi bi-clock"></i>
+            <div>
+              <strong>Horario</strong>
+              <span>Lun–Dom 12–22h</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 feature-item">
+            <i class="bi bi-geo-alt"></i>
+            <div>
+              <strong>Ubicación</strong>
+              <span>La Paz, Bolivia</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 feature-item">
+            <i class="bi bi-telephone"></i>
+            <div>
+              <strong>Teléfono</strong>
+              <span>+591 7523 3556</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 feature-item">
+            <i class="bi bi-star"></i>
+            <div>
+              <strong>Ambiente</strong>
+              <span>Íntimo & Familiar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════ NOSOTROS ═══════════════════════════ -->
+    <section id="nosotros" class="about-section section-pad">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6" data-anim="fade-left">
+            <div class="about-img-wrapper">
+              <div class="about-img-main img-placeholder">
+                <span>Foto del restaurante<br />800×600px</span>
+              </div>
+              <div class="about-img-badge">
+                <span class="badge-number">15</span>
+                <span class="badge-text">Años de<br />experiencia</span>
+              </div>
+              <div class="about-img-accent"></div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-anim="fade-right">
+            <p class="section-eyebrow">Quiénes somos</p>
+            <h2 class="section-title">Tradición en cada bocado</h2>
+            <p class="section-body">
+              Nacimos de la pasión por la cocina boliviana y el deseo de
+              llevarla a otro nivel. Nuestro chef, con formación internacional,
+              rescata recetas ancestrales y las presenta con técnicas
+              contemporáneas.
+            </p>
+            <p class="section-body">
+              Cada ingrediente es seleccionado con cuidado: trabajamos con
+              productores locales para garantizar frescura, calidad y compromiso
+              con nuestra tierra.
+            </p>
+            <div class="about-stats row g-3 mt-2">
+              <div class="col-4 text-center stat-box">
+                <strong>+80</strong><span>Platos en carta</span>
+              </div>
+              <div class="col-4 text-center stat-box">
+                <strong>4.9★</strong><span>En Google</span>
+              </div>
+              <div class="col-4 text-center stat-box">
+                <strong>100%</strong><span>Ingredientes locales</span>
+              </div>
+            </div>
+            <a href="nosotros.html" class="btn-text-link mt-4 d-inline-block"
+              >Conocer más historia <i class="bi bi-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════ MENÚ DESTACADO ═══════════════════════════ -->
+    <section id="menu-destacado" class="menu-section section-pad">
+      <div class="section-bg-pattern"></div>
+      <div class="container position-relative">
+        <div class="text-center mb-5" data-anim="fade-up">
+          <p class="section-eyebrow">Lo mejor de la casa</p>
+          <h2 class="section-title">Platos Estrella</h2>
+          <p class="section-subtitle">
+            Una selección de nuestras preparaciones más queridas por nuestros
+            comensales.
+          </p>
+        </div>
+
+        <!-- Tabs de categorías -->
+        <div
+          class="menu-tabs d-flex justify-content-center flex-wrap gap-2 mb-5"
+          data-anim="fade-up"
+        >
+          <button class="menu-tab active" data-category="todo">Todo</button>
+          <button class="menu-tab" data-category="entradas">Entradas</button>
+          <button class="menu-tab" data-category="principales">
+            Principales
+          </button>
+          <button class="menu-tab" data-category="postres">Postres</button>
+          <button class="menu-tab" data-category="bebidas">Bebidas</button>
+        </div>
+
+        <div class="row g-4" id="menuGrid">
+          <div
+            class="col-md-6 col-lg-4 menu-card-col"
+            data-category="entradas"
+            data-anim="fade-up"
+          >
+            <div class="menu-card">
+              <div class="menu-card-img img-placeholder">
+                <span>Foto del plato<br />600×400px</span>
+                <div class="menu-card-badge">Entrada</div>
+              </div>
+              <div class="menu-card-body">
+                <h3>Salteñas Tradicionales</h3>
+                <p>
+                  Masa horneada rellena de carne jugosa, papa, aceituna y huevo.
+                  La reina del desayuno boliviano.
+                </p>
+                <div class="menu-card-footer">
+                  <span class="menu-price">Bs. 18</span>
+                  <a href="menu.html" class="menu-link">Ver detalle</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 menu-card-col"
+            data-category="principales"
+            data-anim="fade-up"
+          >
+            <div class="menu-card featured">
+              <div class="menu-featured-ribbon">Chef recomienda</div>
+              <div class="menu-card-img img-placeholder">
+                <span>Foto del plato<br />600×400px</span>
+              </div>
+              <div class="menu-card-body">
+                <h3>Sajta de Pollo</h3>
+                <p>
+                  Pollo tierno en salsa de locotos amarillos, acompañado de papa
+                  wayk'u y chuño phuti.
+                </p>
+                <div class="menu-card-footer">
+                  <span class="menu-price">Bs. 65</span>
+                  <a href="menu.html" class="menu-link">Ver detalle</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 menu-card-col"
+            data-category="principales"
+            data-anim="fade-up"
+          >
+            <div class="menu-card">
+              <div class="menu-card-img img-placeholder">
+                <span>Foto del plato<br />600×400px</span>
+              </div>
+              <div class="menu-card-body">
+                <h3>Anticucho con Acompañados</h3>
+                <p>
+                  Corazón de res marinado en ají panca, a la brasa, con papa,
+                  chuño y llajwa artesanal.
+                </p>
+                <div class="menu-card-footer">
+                  <span class="menu-price">Bs. 55</span>
+                  <a href="menu.html" class="menu-link">Ver detalle</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 menu-card-col"
+            data-category="principales"
+            data-anim="fade-up"
+          >
+            <div class="menu-card">
+              <div class="menu-card-img img-placeholder">
+                <span>Foto del plato<br />600×400px</span>
+              </div>
+              <div class="menu-card-body">
+                <h3>Trucha del Lago Titicaca</h3>
+                <p>
+                  Filete de trucha fresca al horno con hierbas andinas, quinua
+                  tostada y verduras de temporada.
+                </p>
+                <div class="menu-card-footer">
+                  <span class="menu-price">Bs. 75</span>
+                  <a href="menu.html" class="menu-link">Ver detalle</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 menu-card-col"
+            data-category="postres"
+            data-anim="fade-up"
+          >
+            <div class="menu-card">
+              <div class="menu-card-img img-placeholder">
+                <span>Foto del plato<br />600×400px</span>
+              </div>
+              <div class="menu-card-body">
+                <h3>Buñuelos con Miel</h3>
+                <p>
+                  Buñuelos esponjosos de anís bañados en miel de caña, servidos
+                  tibios. Tradición en cada bocado.
+                </p>
+                <div class="menu-card-footer">
+                  <span class="menu-price">Bs. 30</span>
+                  <a href="menu.html" class="menu-link">Ver detalle</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 menu-card-col"
+            data-category="bebidas"
+            data-anim="fade-up"
+          >
+            <div class="menu-card">
+              <div class="menu-card-img img-placeholder">
+                <span>Foto de la bebida<br />600×400px</span>
+              </div>
+              <div class="menu-card-body">
+                <h3>Mocochinchi Artesanal</h3>
+                <p>
+                  Refrescante bebida de durazno deshidratado con canela y clavo
+                  de olor. Receta de la abuela.
+                </p>
+                <div class="menu-card-footer">
+                  <span class="menu-price">Bs. 20</span>
+                  <a href="menu.html" class="menu-link">Ver detalle</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-5" data-anim="fade-up">
+          <a href="menu.html" class="btn-gold">Ver Menú Completo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════ BANNER CTA ═══════════════════════════ -->
+    <section class="cta-banner">
+      <div
+        class="cta-bg"
+        style="background-image: url(&quot;assets/img/hero-bg.jpg&quot;)"
+      ></div>
+      <div class="cta-overlay"></div>
+      <div class="container text-center position-relative">
+        <p class="section-eyebrow text-white">¿Lista la ocasión especial?</p>
+        <h2 class="cta-title">Reserva tu mesa hoy</h2>
+        <p class="cta-subtitle">
+          Cumpleaños, aniversarios, cenas románticas o reuniones de empresa.<br />Te
+          creamos la experiencia perfecta.
+        </p>
+        <a href="reservaciones.html" class="btn-gold mt-3">Hacer una Reserva</a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════ GALERÍA ═══════════════════════════ -->
+    <section id="galeria" class="gallery-section section-pad">
+      <div class="container">
+        <div class="text-center mb-5" data-anim="fade-up">
+          <p class="section-eyebrow">Momentos en el restaurante</p>
+          <h2 class="section-title">Nuestra Galería</h2>
+        </div>
+        <div class="gallery-grid" data-anim="fade-up">
+          <div class="gallery-item tall img-placeholder">
+            <span>600×800px</span>
+            <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+          </div>
+          <div class="gallery-item img-placeholder">
+            <span>600×400px</span>
+            <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+          </div>
+          <div class="gallery-item img-placeholder">
+            <span>600×400px</span>
+            <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+          </div>
+          <div class="gallery-item wide img-placeholder">
+            <span>1200×400px</span>
+            <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+          </div>
+          <div class="gallery-item img-placeholder">
+            <span>600×400px</span>
+            <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+          </div>
+          <div class="gallery-item img-placeholder">
+            <span>600×400px</span>
+            <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a href="galeria.html" class="btn-text-link"
+            >Ver galería completa <i class="bi bi-arrow-right"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════ TESTIMONIOS ═══════════════════════════ -->
+    <section class="testimonials-section section-pad">
+      <div class="container">
+        <div class="text-center mb-5" data-anim="fade-up">
+          <p class="section-eyebrow">Lo que dicen nuestros comensales</p>
+          <h2 class="section-title">Opiniones</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4" data-anim="fade-up">
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>
+                "El mejor restaurante de La Paz sin dudas. La sajta de pollo me
+                transportó a la cocina de mi abuela. Ambiente increíble y
+                servicio impecable."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar img-placeholder small">
+                  <span>80×80</span>
+                </div>
+                <div>
+                  <strong>María Fernanda C.</strong><span>La Paz, Bolivia</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-anim="fade-up">
+            <div class="testimonial-card featured-testimonial">
+              <div class="stars">★★★★★</div>
+              <p>
+                "Vine por el cumpleaños de mi esposa y fue mágico. Decoraron la
+                mesa, la música perfecta y los sabores… increíbles.
+                Definitivamente volvemos."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar img-placeholder small">
+                  <span>80×80</span>
+                </div>
+                <div>
+                  <strong>Carlos R.</strong><span>Cochabamba, Bolivia</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4" data-anim="fade-up">
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>
+                "Los anticuchos son de otro nivel. Y la mocochinchi artesanal,
+                perfecta para el calor. Lugar acogedor, precios justos y mucho
+                sabor boliviano."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar img-placeholder small">
+                  <span>80×80</span>
+                </div>
+                <div>
+                  <strong>Valentina M.</strong><span>Santa Cruz, Bolivia</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════ CONTACTO ═══════════════════════════ -->
+    <section id="contacto" class="contact-section section-pad">
+      <div class="container">
+        <div class="row g-5 align-items-start">
+          <div class="col-lg-5" data-anim="fade-left">
+            <p class="section-eyebrow">¿Tienes alguna pregunta?</p>
+            <h2 class="section-title">Contáctanos</h2>
+            <p class="section-body">
+              Estamos aquí para ayudarte. Escríbenos, llámanos o visítanos.
+              También puedes hacer tu reserva directamente desde nuestra página.
+            </p>
+
+            <div class="contact-info-list mt-4">
+              <div class="contact-info-item">
+                <i class="bi bi-geo-alt-fill"></i>
+                <div>
+                  <strong>Dirección</strong
+                  ><span>Av. Principal 123, Sopocachi, La Paz, Bolivia</span>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <i class="bi bi-telephone-fill"></i>
+                <div>
+                  <strong>Teléfono</strong
+                  ><span><a href="tel:+59175233556">+591 7523 3556</a></span>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <i class="bi bi-envelope-fill"></i>
+                <div>
+                  <strong>Email</strong
+                  ><span
+                    ><a href="mailto:hola@saboryalma.bo"
+                      >hola@saboryalma.bo</a
+                    ></span
+                  >
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <i class="bi bi-clock-fill"></i>
+                <div>
+                  <strong>Horarios</strong
+                  ><span>Lunes a Domingo: 12:00 – 22:00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-links mt-4">
+              <a href="#" aria-label="Facebook"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a
+                href="https://wa.me/59175233556"
+                aria-label="WhatsApp"
+                target="_blank"
+                ><i class="bi bi-whatsapp"></i
+              ></a>
+              <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-7" data-anim="fade-right">
+            <div class="contact-form-wrapper">
+              <form id="contactForm" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="nombre" class="form-label"
+                      >Nombre completo *</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control custom-input"
+                      id="nombre"
+                      placeholder="Tu nombre"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input
+                      type="tel"
+                      class="form-control custom-input"
+                      id="telefono"
+                      placeholder="+591 7xxx xxxx"
+                    />
+                  </div>
+                  <div class="col-12">
+                    <label for="email" class="form-label"
+                      >Correo electrónico *</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control custom-input"
+                      id="email"
+                      placeholder="tuemail@ejemplo.com"
+                      required
+                    />
+                  </div>
+                  <div class="col-12">
+                    <label for="asunto" class="form-label">Asunto</label>
+                    <select class="form-control custom-input" id="asunto">
+                      <option value="">Seleccionar asunto...</option>
+                      <option>Reservación</option>
+                      <option>Evento privado</option>
+                      <option>Consulta sobre el menú</option>
+                      <option>Otro</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label for="mensaje" class="form-label">Mensaje *</label>
+                    <textarea
+                      class="form-control custom-input"
+                      id="mensaje"
+                      rows="4"
+                      placeholder="Escribe tu mensaje aquí..."
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn-gold w-100">
+                      Enviar Mensaje <i class="bi bi-send"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mapa -->
+        <div class="map-wrapper mt-5" data-anim="fade-up">
+          <div
+            class="map-placeholder img-placeholder"
+            style="height: 320px; border-radius: 16px"
+          >
+            <i class="bi bi-map" style="font-size: 3rem; opacity: 0.4"></i>
+            <span
+              >Google Maps embed aquí<br /><small
+                >Reemplaza con iframe de Google Maps</small
+              ></span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="footer-brand">
+              <span class="brand-name"
+                >Sabor <span class="brand-accent">&</span> Alma</span
+              >
+            </div>
+            <p class="footer-desc">
+              Cocina artesanal boliviana con técnica contemporánea. Un espacio
+              para compartir, disfrutar y recordar.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="https://wa.me/59175233556" target="_blank"
+                ><i class="bi bi-whatsapp"></i
+              ></a>
+              <a href="#"><i class="bi bi-tiktok"></i></a>
+            </div>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h6 class="footer-heading">Navegar</h6>
+            <ul class="footer-links">
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="nosotros.html">Nosotros</a></li>
+              <li><a href="menu.html">Menú</a></li>
+              <li><a href="galeria.html">Galería</a></li>
+              <li><a href="reservaciones.html">Reservar</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h6 class="footer-heading">Legal</h6>
+            <ul class="footer-links">
+              <li><a href="#">Política de privacidad</a></li>
+              <li><a href="#">Términos de uso</a></li>
+              <li><a href="#">Política de cookies</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4">
+            <h6 class="footer-heading">Horarios</h6>
+            <div class="footer-hours">
+              <div><span>Lunes – Viernes</span><span>12:00 – 22:00</span></div>
+              <div><span>Sábado</span><span>11:00 – 23:00</span></div>
+              <div><span>Domingo</span><span>11:00 – 21:00</span></div>
+            </div>
+            <a
+              href="https://wa.me/59175233556"
+              class="btn-whatsapp-footer mt-3"
+            >
+              <i class="bi bi-whatsapp"></i> Escríbenos en WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Sabor & Alma — Todos los derechos reservados.</p>
+          <p>Diseñado con ❤ en Bolivia</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ═══════════════════════════ WHATSAPP FLOTANTE ═══════════════════════════ -->
+    <a
+      href="https://wa.me/59175233556?text=Hola!%20Vi%20su%20página%20web%20y%20quisiera%20más%20información."
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Contactar por WhatsApp"
+    >
+      <i class="bi bi-whatsapp"></i>
+      <span class="whatsapp-tooltip">¡Escríbenos!</span>
+      <div class="whatsapp-pulse"></div>
+    </a>
+
+    <!-- ═══════════════════════════ LIGHTBOX ═══════════════════════════ -->
+    <div id="lightbox" class="lightbox">
+      <button class="lightbox-close" id="lightboxClose">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <img id="lightboxImg" src="" alt="" />
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

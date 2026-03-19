@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservaciones — Sabor & Alma</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .reserva-section {
+        background: var(--light-2);
+        padding: 80px 0;
+      }
+
+      .reserva-card {
+        background: var(--white);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+      }
+      .reserva-sidebar {
+        background: var(--dark);
+        padding: 48px 40px;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+      .reserva-sidebar::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(201, 168, 76, 0.18) 0%,
+          transparent 70%
+        );
+      }
+      .reserva-sidebar .section-title {
+        color: var(--white);
+        font-size: 2rem;
+      }
+      .reserva-sidebar .section-eyebrow {
+        color: var(--gold);
+      }
+
+      .info-box {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        padding: 20px;
+        margin-bottom: 16px;
+        transition: background var(--transition);
+      }
+      .info-box:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .info-box i {
+        font-size: 1.4rem;
+        color: var(--gold);
+        margin-bottom: 8px;
+        display: block;
+      }
+      .info-box strong {
+        display: block;
+        color: var(--white);
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 4px;
+      }
+      .info-box span {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.55);
+      }
+
+      .reserva-form-area {
+        padding: 48px 40px;
+      }
+
+      .time-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .time-btn {
+        font-size: 0.78rem;
+        font-weight: 500;
+        padding: 10px 6px;
+        border: 1px solid #e0d8cc;
+        border-radius: 8px;
+        background: var(--light-2);
+        color: var(--mid);
+        cursor: pointer;
+        text-align: center;
+        transition: all var(--transition);
+      }
+      .time-btn:hover,
+      .time-btn.selected {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: var(--dark);
+        font-weight: 600;
+      }
+      .time-btn.unavailable {
+        opacity: 0.4;
+        cursor: not-allowed;
+        text-decoration: line-through;
+      }
+
+      .personas-selector {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 8px;
+      }
+      .personas-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 1px solid #e0d8cc;
+        background: var(--white);
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .personas-btn:hover {
+        border-color: var(--gold);
+        color: var(--gold-dark);
+      }
+      .personas-count {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--dark);
+        min-width: 40px;
+        text-align: center;
+      }
+      .personas-label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      .step-indicator {
+        display: flex;
+        gap: 0;
+        margin-bottom: 36px;
+      }
+      .step {
+        flex: 1;
+        text-align: center;
+        position: relative;
+      }
+      .step::after {
+        content: "";
+        position: absolute;
+        top: 18px;
+        left: 50%;
+        right: -50%;
+        height: 2px;
+        background: #e0d8cc;
+        z-index: 0;
+      }
+      .step:last-child::after {
+        display: none;
+      }
+      .step-circle {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid #e0d8cc;
+        background: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        margin: 0 auto 8px;
+        position: relative;
+        z-index: 1;
+        transition: all var(--transition);
+      }
+      .step.active .step-circle,
+      .step.done .step-circle {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: var(--dark);
+      }
+      .step-label {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .step.active .step-label {
+        color: var(--gold-dark);
+        font-weight: 600;
+      }
+
+      .occasion-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 8px;
+      }
+      .occasion-btn {
+        border: 1px solid #e0d8cc;
+        border-radius: 10px;
+        padding: 12px 8px;
+        text-align: center;
+        cursor: pointer;
+        background: var(--light-2);
+        transition: all var(--transition);
+        font-size: 0.78rem;
+        color: var(--mid);
+      }
+      .occasion-btn i {
+        display: block;
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+        color: var(--gold);
+      }
+      .occasion-btn:hover,
+      .occasion-btn.selected {
+        border-color: var(--gold);
+        background: rgba(201, 168, 76, 0.08);
+        color: var(--dark);
+      }
+
+      @media (max-width: 767px) {
+        .reserva-sidebar,
+        .reserva-form-area {
+          padding: 32px 24px;
+        }
+        .time-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .occasion-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top scrolled">
+      <div class="container">
+        <a
+          class="navbar-brand d-flex align-items-center gap-2"
+          href="index.html"
+        >
+          <img
+            src="assets/img/logo.png"
+            alt="Logo"
+            width="42"
+            height="42"
+            class="logo-img"
+            onerror="this.style.display='none'"
+          />
+          <span class="brand-name"
+            >Sabor <span class="brand-accent">&</span> Alma</span
+          >
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navLinks"
+        >
+          <span class="nav-hamburger"><i class="bi bi-list"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navLinks">
+          <ul class="navbar-nav ms-auto align-items-center gap-lg-1">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="menu.html">Menú</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="galeria.html">Galería</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#contacto">Contacto</a>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn-reservar" href="reservaciones.html"
+                >Reservar Mesa</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="page-hero">
+      <div class="container" style="position: relative; z-index: 1">
+        <p class="section-eyebrow">Reserva tu espacio</p>
+        <h1 class="section-title">Reservaciones</h1>
+        <p class="section-subtitle">
+          Asegura tu mesa y disfruta de una experiencia gastronómica
+          inolvidable.
+        </p>
+      </div>
+    </div>
+
+    <section class="reserva-section">
+      <div class="container">
+        <div class="reserva-card">
+          <div class="row g-0">
+            <!-- SIDEBAR INFO -->
+            <div class="col-lg-4">
+              <div class="reserva-sidebar">
+                <p class="section-eyebrow mb-1">Reserva tu mesa</p>
+                <h2 class="section-title mb-4">Una noche especial te espera</h2>
+
+                <div class="info-box">
+                  <i class="bi bi-clock"></i>
+                  <strong>Horarios de atención</strong>
+                  <span
+                    >Lunes a Viernes: 12:00 – 22:00<br />Sábado: 11:00 –
+                    23:00<br />Domingo: 11:00 – 21:00</span
+                  >
+                </div>
+
+                <div class="info-box">
+                  <i class="bi bi-geo-alt"></i>
+                  <strong>Dirección</strong>
+                  <span>Av. Principal 123, Sopocachi<br />La Paz, Bolivia</span>
+                </div>
+
+                <div class="info-box">
+                  <i class="bi bi-telephone"></i>
+                  <strong>Contacto directo</strong>
+                  <span>
+                    <a href="tel:+59175233556" style="color: var(--gold)"
+                      >+591 7523 3556</a
+                    ><br />
+                    <a
+                      href="mailto:hola@saboryalma.bo"
+                      style="
+                        color: rgba(255, 255, 255, 0.55);
+                        font-size: 0.78rem;
+                      "
+                      >hola@saboryalma.bo</a
+                    >
+                  </span>
+                </div>
+
+                <div class="info-box">
+                  <i class="bi bi-info-circle"></i>
+                  <strong>Política de reservas</strong>
+                  <span
+                    >Reservas con mínimo 2 horas de anticipación. La mesa se
+                    mantiene 15 minutos después de la hora reservada.</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- FORM -->
+            <div class="col-lg-8">
+              <div class="reserva-form-area">
+                <!-- Steps -->
+                <div class="step-indicator">
+                  <div class="step active">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Datos</div>
+                  </div>
+                  <div class="step">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Fecha & Hora</div>
+                  </div>
+                  <div class="step">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Confirmar</div>
+                  </div>
+                </div>
+
+                <form id="reservaForm" novalidate>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Nombre completo *</label>
+                      <input
+                        type="text"
+                        class="form-control custom-input"
+                        id="r-nombre"
+                        placeholder="Tu nombre completo"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Teléfono *</label>
+                      <input
+                        type="tel"
+                        class="form-control custom-input"
+                        id="r-telefono"
+                        placeholder="+591 7xxx xxxx"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label">Correo electrónico</label>
+                      <input
+                        type="email"
+                        class="form-control custom-input"
+                        id="r-email"
+                        placeholder="Para enviarte confirmación"
+                      />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Fecha de reserva *</label>
+                      <input
+                        type="date"
+                        class="form-control custom-input"
+                        id="fecha"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Número de personas *</label>
+                      <select
+                        class="form-control custom-input"
+                        id="personas"
+                        required
+                      >
+                        <option value="">Seleccionar...</option>
+                        <option value="1">1 persona</option>
+                        <option value="2">2 personas</option>
+                        <option value="3">3 personas</option>
+                        <option value="4">4 personas</option>
+                        <option value="5">5 personas</option>
+                        <option value="6">6 personas</option>
+                        <option value="7-10">7–10 personas</option>
+                        <option value="+10">Más de 10 (evento)</option>
+                      </select>
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label">Hora preferida *</label>
+                      <div class="time-grid" id="timeGrid">
+                        <div class="time-btn" data-time="12:00">12:00</div>
+                        <div class="time-btn" data-time="12:30">12:30</div>
+                        <div class="time-btn" data-time="13:00">13:00</div>
+                        <div class="time-btn" data-time="13:30">13:30</div>
+                        <div class="time-btn" data-time="14:00">14:00</div>
+                        <div class="time-btn" data-time="14:30">14:30</div>
+                        <div class="time-btn" data-time="19:00">19:00</div>
+                        <div class="time-btn" data-time="19:30">19:30</div>
+                        <div class="time-btn" data-time="20:00">20:00</div>
+                        <div class="time-btn" data-time="20:30">20:30</div>
+                        <div class="time-btn" data-time="21:00">21:00</div>
+                        <div class="time-btn" data-time="21:30">21:30</div>
+                      </div>
+                      <input type="hidden" id="hora" required />
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label">Ocasión especial</label>
+                      <div class="occasion-grid">
+                        <div class="occasion-btn" data-occasion="Cumpleaños">
+                          <i class="bi bi-balloon-heart"></i>Cumpleaños
+                        </div>
+                        <div class="occasion-btn" data-occasion="Aniversario">
+                          <i class="bi bi-heart"></i>Aniversario
+                        </div>
+                        <div
+                          class="occasion-btn"
+                          data-occasion="Reunión de negocios"
+                        >
+                          <i class="bi bi-briefcase"></i>Negocios
+                        </div>
+                        <div
+                          class="occasion-btn"
+                          data-occasion="Cena romántica"
+                        >
+                          <i class="bi bi-stars"></i>Romántica
+                        </div>
+                        <div
+                          class="occasion-btn"
+                          data-occasion="Reunión familiar"
+                        >
+                          <i class="bi bi-people"></i>Familiar
+                        </div>
+                        <div
+                          class="occasion-btn"
+                          data-occasion="Sin ocasión especial"
+                        >
+                          <i class="bi bi-cup-hot"></i>Sin ocasión
+                        </div>
+                      </div>
+                      <input type="hidden" id="ocasion" />
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label">Notas adicionales</label>
+                      <textarea
+                        class="form-control custom-input"
+                        id="r-notas"
+                        rows="3"
+                        placeholder="Alergias, preferencias de mesa, peticiones especiales..."
+                      ></textarea>
+                    </div>
+
+                    <div class="col-12 mt-2">
+                      <button
+                        type="submit"
+                        class="btn-gold w-100"
+                        style="font-size: 0.9rem; padding: 16px"
+                      >
+                        <i class="bi bi-whatsapp me-2"></i>Confirmar Reserva por
+                        WhatsApp
+                      </button>
+                      <p
+                        style="
+                          font-size: 0.75rem;
+                          color: var(--text-muted);
+                          text-align: center;
+                          margin-top: 10px;
+                        "
+                      >
+                        Al confirmar, serás redirigido a WhatsApp para finalizar
+                        tu reserva.
+                      </p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer mínimo -->
+    <footer class="site-footer">
+      <div class="container">
+        <div
+          class="footer-bottom"
+          style="
+            padding: 28px 0;
+            margin: 0;
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+          "
+        >
+          <p>© 2025 Sabor & Alma</p>
+          <a href="index.html" style="color: var(--gold); font-size: 0.82rem"
+            >← Volver al inicio</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <a href="https://wa.me/59175233556" class="whatsapp-float" target="_blank">
+      <i class="bi bi-whatsapp"></i>
+      <span class="whatsapp-tooltip">¡Escríbenos!</span>
+      <div class="whatsapp-pulse"></div>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      // Time selector
+      document.querySelectorAll(".time-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".time-btn")
+            .forEach((b) => b.classList.remove("selected"));
+          btn.classList.add("selected");
+          document.getElementById("hora").value = btn.dataset.time;
+        });
+      });
+
+      // Occasion selector
+      document.querySelectorAll(".occasion-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".occasion-btn")
+            .forEach((b) => b.classList.remove("selected"));
+          btn.classList.add("selected");
+          document.getElementById("ocasion").value = btn.dataset.occasion;
+        });
+      });
+
+      // Reserva form override (needs hora from time-btn)
+      const form = document.getElementById("reservaForm");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const nombre = document.getElementById("r-nombre").value.trim();
+          const telefono = document.getElementById("r-telefono").value.trim();
+          const fecha = document.getElementById("fecha").value;
+          const hora = document.getElementById("hora").value;
+          const personas = document.getElementById("personas").value;
+          const ocasion = document.getElementById("ocasion").value;
+          const notas = document.getElementById("r-notas").value.trim();
+
+          if (!nombre || !telefono || !fecha || !hora || !personas) {
+            // Show error
+            const toast = document.createElement("div");
+            Object.assign(toast.style, {
+              position: "fixed",
+              bottom: "24px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              background: "#b5341c",
+              color: "#fff",
+              padding: "14px 28px",
+              borderRadius: "8px",
+              fontFamily: "Jost,sans-serif",
+              fontSize: ".9rem",
+              zIndex: "99999",
+              boxShadow: "0 8px 30px rgba(0,0,0,.25)",
+              opacity: "0",
+              transition: "opacity .3s ease",
+            });
+            toast.textContent =
+              "⚠ Por favor completa los campos requeridos y selecciona una hora.";
+            document.body.appendChild(toast);
+            requestAnimationFrame(() => (toast.style.opacity = "1"));
+            setTimeout(() => {
+              toast.style.opacity = "0";
+              setTimeout(() => toast.remove(), 400);
+            }, 3500);
+            return;
+          }
+
+          let msg = `Hola! Quisiera hacer una reserva:\n• Nombre: ${nombre}\n• Fecha: ${fecha}\n• Hora: ${hora}\n• Personas: ${personas}\n• Teléfono: ${telefono}`;
+          if (ocasion) msg += `\n• Ocasión: ${ocasion}`;
+          if (notas) msg += `\n• Notas: ${notas}`;
+
+          window.open(
+            `https://wa.me/59175233556?text=${encodeURIComponent(msg)}`,
+            "_blank",
+          );
+        });
+      }
+    </script>
+  </body>
+</html>
